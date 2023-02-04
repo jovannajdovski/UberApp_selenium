@@ -23,8 +23,8 @@ public class FinishRide {
     @BeforeClass
     public void initDriver()
     {
-        System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        System.setProperty("webdriver.gecko.driver", "../../geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver", "../../chromedriver.exe");
         chrome_driver=new ChromeDriver();
 
         firefox_driver = new FirefoxDriver();

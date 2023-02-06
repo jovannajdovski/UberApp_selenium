@@ -70,4 +70,8 @@ public class CurrentRidePage {
         WebDriverWait wait=new WebDriverWait(this.driver, 5*60);
         wait.until(ExpectedConditions.visibilityOf(freeCarIcon));
     }
+
+    public void clickBack(){
+        backToHomePageButton.click();
+    }
 }

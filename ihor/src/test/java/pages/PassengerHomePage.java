@@ -7,7 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage {
+public class PassengerHomePage {
+
     private WebDriver driver;
 
     @FindBy(css = "#currentRideBtn")
@@ -16,15 +17,21 @@ public class HomePage {
     WebElement nextRidesButton;
     @FindBy(css = "#sign-out-button")
     WebElement logoutButton;
-    public HomePage(WebDriver webDriver)
+
+    @FindBy(css = "#startLoc input")
+    WebElement departureInput;
+
+    @FindBy(css = "#finalLoc input")
+    WebElement destinationInput;
+
+    @FindBy(css = "#estimateBtn")
+    WebElement continueBtn;
+    public PassengerHomePage(WebDriver webDriver)
     {
         this.driver=webDriver;
         PageFactory.initElements(this.driver,this);
     }
-    public void clickOnCurrentRide()
-    {
-        currentRideButton.click();
-    }
+
     public void clickOnNextRides()
     {
         nextRidesButton.click();
@@ -33,6 +40,15 @@ public class HomePage {
         WebDriverWait wait=new WebDriverWait(this.driver, 10);
         wait.until(ExpectedConditions.visibilityOf(currentRideButton));
         return true;
+    }
+
+    public void enterLocations(String departure, String destination){
+        departureInput.sendKeys(departure);
+        destinationInput.sendKeys(destination);
+    }
+
+    public void clickContinue(){
+        continueBtn.click();
     }
 
     public void logout(){

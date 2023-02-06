@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import pages.*;
 
 import java.awt.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ScheduleRide {
@@ -24,13 +25,16 @@ public class ScheduleRide {
     private final String PASSENGER_EMAIL="passenger@gmail.com";
     private final String PASSENGER_PASSWORD="NekaSifra123";
 
-    private final String START_LOCATION="Bulevar Oslobodjenja 32";
-    private final String FINAL_LOCATION="Bulevar Evrope 4";
+    private final String START_LOCATION="Bulevar patrijarha Pavla 36, Novi Sad";
+    private final String FINAL_LOCATION="Bulevar Evrope 4, Novi Sad";
 
     private final String VEHICLE_TYPE="STANDARD";
 
     private final Boolean BABY_TRANSPORT=true;
     private final Boolean PET_TRANSPORT=true;
+
+    private String startAddress;
+    private String endAddress;
 
     @BeforeClass
     public void initDriver()
@@ -59,7 +63,7 @@ public class ScheduleRide {
         firefox_driver.quit();
     }
     @Test
-    public void finishRideTest(){
+    public void scheduleRideTest(){
         signInUsers();
 
         HomePage homePageDriver = new HomePage(chrome_driver);
@@ -68,14 +72,17 @@ public class ScheduleRide {
         Assert.assertTrue(homePageDriver.isOpened());
         Assert.assertTrue(homePagePassenger.isOpened());
 
-        homePagePassenger.enterLocations(START_LOCATION, FINAL_LOCATION);
+        List<String> addresses = homePagePassenger.clickOnMapForLocations();
+        startAddress = addresses.get(0);
+        endAddress = addresses.get(1);
         homePagePassenger.clickContinue();
 
         addAdditionalRideInformation();
 
         OverviewPage overviewPage = new OverviewPage(firefox_driver);
         Assert.assertTrue(overviewPage.isOpened());
-        Assert.assertTrue(overviewPage.checkValidity(START_LOCATION, FINAL_LOCATION, BABY_TRANSPORT, PET_TRANSPORT, VEHICLE_TYPE));
+
+        Assert.assertTrue(overviewPage.checkValidity(startAddress, endAddress, BABY_TRANSPORT, PET_TRANSPORT, VEHICLE_TYPE));
 
         overviewPage.clickConfirm();
 
@@ -123,6 +130,7 @@ public class ScheduleRide {
         LoginPage loginPagePassenger=new LoginPage(firefox_driver);
         Assert.assertTrue(loginPagePassenger.isOpened());
 
+        chrome_driver.manage().window().maximize();
         homePageDriver.logout();
         LoginPage loginPageDriver=new LoginPage(chrome_driver);
         Assert.assertTrue(loginPageDriver.isOpened());

@@ -14,6 +14,9 @@ public class AdditionalPage {
     @FindBy(css = "#continueButton")
     WebElement continueBtn;
 
+    @FindBy(css = "path.leaflet-interactive")
+    WebElement path;
+
     @FindBy(css = "#vehicleType mat-label")
     WebElement selectLabel;
 
@@ -69,7 +72,7 @@ public class AdditionalPage {
 
     public boolean isOpened() {
         WebDriverWait wait=new WebDriverWait(this.driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(selectLabel));
+        wait.until(ExpectedConditions.visibilityOf(path));
         return true;
     }
 }

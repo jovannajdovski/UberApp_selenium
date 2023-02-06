@@ -11,8 +11,12 @@ public class CanScheduleRidePage {
 
     private WebDriver driver;
 
-    @FindBy(css = "h1")
+    @FindBy(css = ".container h1")
     WebElement heading;
+    @FindBy(css = ".green")
+    WebElement icon;
+    @FindBy(css = ".red")
+    WebElement icon_red;
     @FindBy(css = "#continueButton")
     WebElement backBtn;
     public CanScheduleRidePage(WebDriver webDriver)
@@ -23,11 +27,18 @@ public class CanScheduleRidePage {
 
     public boolean isOpened() {
         WebDriverWait wait=new WebDriverWait(this.driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(backBtn));
+        wait.until(ExpectedConditions.visibilityOf(icon));
+        return true;
+    }
+
+    public boolean isOpenedInvalid() {
+        WebDriverWait wait=new WebDriverWait(this.driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(icon_red));
         return true;
     }
 
     public boolean isScheduled() {
+        System.out.println(heading.getText());
         return heading.getText().equals("Payment successfull");
     }
 

@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.Assert;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,6 +11,7 @@ import org.testng.annotations.Test;
 import pages.*;
 
 import java.awt.*;
+import java.util.List;
 
 public class ScheduleRideWithoutActiveDriver {
 
@@ -24,13 +26,22 @@ public class ScheduleRideWithoutActiveDriver {
     private final Boolean BABY_TRANSPORT=true;
     private final Boolean PET_TRANSPORT=true;
 
+    private String startAddress;
+    private String endAddress;
+
     @BeforeClass
     public void initDriver()
     {
         System.setProperty("webdriver.chrome.driver", "../../chromedriver");
         chrome_driver=new ChromeDriver();
 
-        chrome_driver.manage().window().maximize();
+        java.awt.Dimension size
+                = Toolkit.getDefaultToolkit().getScreenSize();
+
+        int width = (int)size.getWidth();
+        int height = (int)size.getHeight();
+
+        chrome_driver.manage().window().setSize(new Dimension(width/2,height));
 
     }
     @AfterClass
@@ -39,25 +50,27 @@ public class ScheduleRideWithoutActiveDriver {
         chrome_driver.quit();
     }
     @Test
-    public void finishRideTest(){
+    public void scheduleRideWithoutActiveDriverTest(){
         signInPassenger();
 
         PassengerHomePage homePagePassenger=new PassengerHomePage(chrome_driver);
         Assert.assertTrue(homePagePassenger.isOpened());
 
-        homePagePassenger.enterLocations(START_LOCATION, FINAL_LOCATION);
+        List<String> addresses = homePagePassenger.clickOnMapForLocations();
+        startAddress = addresses.get(0);
+        endAddress = addresses.get(1);
         homePagePassenger.clickContinue();
 
         addAdditionalRideInformation();
 
         OverviewPage overviewPage = new OverviewPage(chrome_driver);
         Assert.assertTrue(overviewPage.isOpened());
-        Assert.assertTrue(overviewPage.checkValidity(START_LOCATION, FINAL_LOCATION, BABY_TRANSPORT, PET_TRANSPORT, VEHICLE_TYPE));
+        Assert.assertTrue(overviewPage.checkValidity(startAddress, endAddress, BABY_TRANSPORT, PET_TRANSPORT, VEHICLE_TYPE));
 
         overviewPage.clickConfirm();
 
         CanScheduleRidePage canScheduleRidePage = new CanScheduleRidePage(chrome_driver);
-        Assert.assertTrue(canScheduleRidePage.isOpened());
+        Assert.assertTrue(canScheduleRidePage.isOpenedInvalid());
         Assert.assertFalse(canScheduleRidePage.isScheduled());
 
         canScheduleRidePage.clickBack();
@@ -85,6 +98,7 @@ public class ScheduleRideWithoutActiveDriver {
         PassengerHomePage backHomePagePassenger=new PassengerHomePage(chrome_driver);
         Assert.assertTrue(backHomePagePassenger.isOpened());
 
+        chrome_driver.manage().window().maximize();
         backHomePagePassenger.logout();
 
         LoginPage loginPagePassenger=new LoginPage(chrome_driver);

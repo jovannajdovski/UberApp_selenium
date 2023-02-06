@@ -143,6 +143,7 @@ public class FinishRide {
         Assert.assertTrue(loginPagePassenger.isOpened());
 
         HomePage homePageDriver=new HomePage(chrome_driver);
+        chrome_driver.manage().window().maximize();
         homePageDriver.logout();
         
         LoginPage loginPageDriver=new LoginPage(chrome_driver);

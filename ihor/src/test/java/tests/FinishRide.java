@@ -23,8 +23,8 @@ public class FinishRide {
     @BeforeClass
     public void initDriver()
     {
-        System.setProperty("webdriver.gecko.driver", "../../geckodriver.exe");
-        System.setProperty("webdriver.chrome.driver", "../../chromedriver.exe");
+        System.setProperty("webdriver.gecko.driver", "../../geckodriver");
+        System.setProperty("webdriver.chrome.driver", "../../chromedriver");
         chrome_driver=new ChromeDriver();
 
         firefox_driver = new FirefoxDriver();
@@ -73,6 +73,8 @@ public class FinishRide {
         currentRidePageDriver.clickOnFinishRide();
 
         checkNoCurrentRideAfterFinishingIt(currentRidePageDriver,currentRidePagePassenger,homePageDriver,homePagePassenger);
+
+        signOutUsers(currentRidePageDriver, currentRidePagePassenger);
     }
 
     private void signInUsers()
@@ -126,5 +128,25 @@ public class FinishRide {
 
         Assert.assertTrue(currentRidePageDriver.hasNotCurrentRide());
         Assert.assertTrue(currentRidePagePassenger.hasNotCurrentRide());
+    }
+
+    public void signOutUsers(CurrentRidePage currentRidePageDriver,CurrentRidePage currentRidePagePassenger){
+        currentRidePagePassenger.clickBack();
+        currentRidePageDriver.clickBack();
+
+        PassengerHomePage backHomePagePassenger=new PassengerHomePage(firefox_driver);
+        Assert.assertTrue(backHomePagePassenger.isOpened());
+
+        backHomePagePassenger.logout();
+
+        LoginPage loginPagePassenger=new LoginPage(firefox_driver);
+        Assert.assertTrue(loginPagePassenger.isOpened());
+
+        HomePage homePageDriver=new HomePage(chrome_driver);
+        chrome_driver.manage().window().maximize();
+        homePageDriver.logout();
+        
+        LoginPage loginPageDriver=new LoginPage(chrome_driver);
+        Assert.assertTrue(loginPageDriver.isOpened());
     }
 }

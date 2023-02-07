@@ -34,4 +34,8 @@ public class HomePage {
         wait.until(ExpectedConditions.visibilityOf(currentRideButton));
         return true;
     }
+
+    public void logout(){
+        logoutButton.click();
+    }
 }

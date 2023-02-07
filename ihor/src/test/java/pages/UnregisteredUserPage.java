@@ -11,19 +11,20 @@ public class UnregisteredUserPage {
     private WebDriver driver;
     @FindBy(css = "#login-button")
     WebElement loginButton;
-    public UnregisteredUserPage(WebDriver webDriver)
-    {
-        this.driver=webDriver;
+
+    public UnregisteredUserPage(WebDriver webDriver) {
+        this.driver = webDriver;
         this.driver.get("http://localhost:4200/");
-        PageFactory.initElements(this.driver,this);
+        PageFactory.initElements(this.driver, this);
 
     }
-    public void clickOnLogin()
-    {
+
+    public void clickOnLogin() {
         loginButton.click();
     }
+
     public boolean isOpened() {
-        WebDriverWait wait=new WebDriverWait(this.driver, 10);
+        WebDriverWait wait = new WebDriverWait(this.driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         return true;
     }

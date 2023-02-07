@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d4501f1-f70c-4052-aef4-eb53c613fdbe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ihor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ihor.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pages/AdditionalPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/AdditionalPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pages/CanScheduleRidePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/CanScheduleRidePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pages/PassengerHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/PassengerHomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/FinishRide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/FinishRide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/PassengerLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/PassengerLoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/PassengerLoginValidationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/PassengerLoginValidationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/ScheduleRide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/ScheduleRide.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/ScheduleRideWithoutActiveDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/ScheduleRideWithoutActiveDriver.java" afterDir="false" />
     </list>
@@ -61,8 +58,8 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="TestNG.ScheduleRideWithoutActiveDriver">
-    <configuration name="FinishRide" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.ScheduleRide (1)">
+    <configuration name="PassengerLoginTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ihor" />
       <extension name="coverage">
         <pattern>
@@ -71,7 +68,41 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.FinishRide" />
+      <option name="MAIN_CLASS_NAME" value="tests.PassengerLoginTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PassengerLoginValidationTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ihor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.PassengerLoginValidationTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScheduleRide (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ihor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.ScheduleRide" />
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
@@ -113,49 +144,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ScheduleRide.finishRideTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ihor" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ScheduleRide" />
-      <option name="METHOD_NAME" value="finishRideTest" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ScheduleRide.scheduleRideTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ihor" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ScheduleRide" />
-      <option name="METHOD_NAME" value="scheduleRideTest" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.ScheduleRide (1)" />
+        <item itemvalue="TestNG.PassengerLoginValidationTest" />
+        <item itemvalue="TestNG.PassengerLoginTest" />
         <item itemvalue="TestNG.ScheduleRideWithoutActiveDriver" />
         <item itemvalue="TestNG.ScheduleRide" />
-        <item itemvalue="TestNG.ScheduleRide.scheduleRideTest" />
-        <item itemvalue="TestNG.FinishRide" />
-        <item itemvalue="TestNG.ScheduleRide.finishRideTest" />
       </list>
     </recent_temporary>
   </component>

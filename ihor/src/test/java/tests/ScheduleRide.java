@@ -39,8 +39,8 @@ public class ScheduleRide {
     @BeforeClass
     public void initDriver()
     {
-        System.setProperty("webdriver.gecko.driver", "../../geckodriver");
-        System.setProperty("webdriver.chrome.driver", "../../chromedriver");
+        System.setProperty("webdriver.gecko.driver", "../../geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver", "../../chromedriver.exe");
         chrome_driver=new ChromeDriver();
 
         firefox_driver = new FirefoxDriver();
@@ -125,6 +125,7 @@ public class ScheduleRide {
         PassengerHomePage backHomePagePassenger=new PassengerHomePage(firefox_driver);
         Assert.assertTrue(backHomePagePassenger.isOpened());
 
+        firefox_driver.manage().window().maximize();
         backHomePagePassenger.logout();
 
         LoginPage loginPagePassenger=new LoginPage(firefox_driver);

@@ -32,7 +32,7 @@ public class ScheduleRideWithoutActiveDriver {
     @BeforeClass
     public void initDriver()
     {
-        System.setProperty("webdriver.chrome.driver", "../../chromedriver");
+        System.setProperty("webdriver.chrome.driver", "../../chromedriver.exe");
         chrome_driver=new ChromeDriver();
 
         java.awt.Dimension size

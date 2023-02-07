@@ -23,7 +23,7 @@ public class PassengerLoginValidationTest {
 
     @BeforeClass
     public void initDriver() {
-        System.setProperty("webdriver.chrome.driver", "../../chromedriver");
+        System.setProperty("webdriver.chrome.driver", "../../chromedriver.exe");
         chrome_driver = new ChromeDriver();
 
         chrome_driver.manage().window().maximize();

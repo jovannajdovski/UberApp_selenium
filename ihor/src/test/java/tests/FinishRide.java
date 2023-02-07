@@ -23,14 +23,15 @@ public class FinishRide {
     @BeforeClass
     public void initDriver()
     {
-        System.setProperty("webdriver.gecko.driver", "../../geckodriver");
-        System.setProperty("webdriver.chrome.driver", "../../chromedriver");
+        System.setProperty("webdriver.gecko.driver", "../../geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver", "../../chromedriver.exe");
+        firefox_driver = new FirefoxDriver();
         chrome_driver=new ChromeDriver();
 
-        firefox_driver = new FirefoxDriver();
 
-        chrome_driver.manage().window().setSize(new Dimension(1450,1100));
-        firefox_driver.manage().window().setSize(new Dimension(800,1100));
+
+        chrome_driver.manage().window().setSize(new Dimension(1450,1000));
+        firefox_driver.manage().window().setSize(new Dimension(800,1000));
         firefox_driver.manage().window().setPosition(new Point(1200,0));
     }
     @AfterClass
@@ -137,6 +138,8 @@ public class FinishRide {
         PassengerHomePage backHomePagePassenger=new PassengerHomePage(firefox_driver);
         Assert.assertTrue(backHomePagePassenger.isOpened());
 
+
+        firefox_driver.manage().window().maximize();
         backHomePagePassenger.logout();
 
         LoginPage loginPagePassenger=new LoginPage(firefox_driver);
